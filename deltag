@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dildiya — Форум</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101321;color:white;font-family:Arial,sans-serif}
+header{background:#191d30;padding:22px;text-align:center;border-bottom:2px solid #eebc35}
+header h1{color:#ffd34e;margin:0}
+header p{color:#c4c8d8}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:15px}
+button{cursor:pointer;border:0;border-radius:9px;padding:12px 17px;background:#292f49;color:white;font-weight:bold}
+button:hover{background:#aa7c22}
+main{max-width:850px;margin:15px auto;padding:12px}
+.category{display:flex;align-items:center;gap:15px;background:#202740;padding:18px;margin:12px 0;border-radius:12px;cursor:pointer}
+.category:hover{background:#303a5c}
+.symbol{font-size:28px}
+.category h3{margin:0 0 7px;color:#ffd34e}
+.category p{margin:0;color:#c5cada}
+#section{display:none;background:#202740;padding:22px;border-radius:12px}
+.post{background:#171d30;padding:15px;border-radius:8px;margin:12px 0}
+input,textarea{width:100%;padding:12px;margin:8px 0;border-radius:7px;border:1px solid #555;background:#101321;color:white}
+footer{text-align:center;color:#9299b2;padding:25px}
+</style>
+</head>
+<body>
+<header>
+<h1>⚔ DILDIYA</h1>
+<p>Официальный форум Minecraft-сервера</p>
+</header>
+
+<nav>
+<button onclick="home()">Главная</button>
+<button onclick="openSection('Новости')">Новости</button>
+<button onclick="openSection('Правила')">Правила</button>
+<button onclick="openSection('Помощь игрокам')">Помощь</button>
+<button onclick="openSection('Общение')">Общение</button>
+<button onclick="openSection('Розыгрыши')">Розыгрыши</button>
+</nav>
+
+<main>
+<div id="home">
+<h2>Форум сервера</h2>
+<p>Добро пожаловать на Dildiya!</p>
+
+<div class="category" onclick="openSection('Новости')">
+<div class="symbol">📢</div><div>
+<h3>Новости</h3><p>Обновления и события сервера</p>
+</div></div>
+
+<div class="category" onclick="openSection('Правила')">
+<div class="symbol">📜</div><div>
+<h3>Правила</h3><p>Правила нашего сервера</p>
+</div></div>
+
+<div class="category" onclick="openSection('Помощь игрокам')">
+<div class="symbol">💡</div><div>
+<h3>Помощь игрокам</h3><p>Вопросы и помощь по игре</p>
+</div></div>
+
+<div class="category" onclick="openSection('Общение')">
+<div class="symbol">💬</div><div>
+<h3>Общение</h3><p>Общайся с другими игроками</p>
+</div></div>
+
+<div class="category" onclick="openSection('Розыгрыши')">
+<div class="symbol">🎁</div><div>
+<h3>Розыгрыши</h3><p>Конкурсы и подарки</p>
+</div></div>
+</div>
+
+<div id="section">
+<button onclick="home()">← Назад</button>
+<h2 id="sectionTitle"></h2>
+<div id="posts"></div>
+</div>
+</main>
+
+<footer>Dildiya © 2026 · Minecraft SMP</footer>
+
+<script>
+function home(){
+document.getElementById('home').style.display='block';
+document.getElementById('section').style.display='none';
+}
+function openSection(name){
+document.getElementById('home').style.display='none';
+document.getElementById('section').style.display='block';
+document.getElementById('sectionTitle').textContent=name;
+let descriptions={
+'Новости':'Здесь будут новости и обновления сервера.',
+'Правила':'Соблюдай правила и уважай других игроков.',
+'Помощь игрокам':'Здесь можно обсуждать вопросы по игре.',
+'Общение':'Общайся с участниками нашего сервера.',
+'Розыгрыши':'Здесь будут новости о розыгрышах.'
+};
+document.getElementById('posts').innerHTML=
+'<div class="post"><h3>'+name+'</h3><p>'+descriptions[name]+'</p></div>';
+}
+</script>
+</body>
+</html>
